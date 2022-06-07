@@ -26,6 +26,10 @@ dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:29.0-jre'
 
-    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.1.0'
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.1.0'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
+
 
 }
