@@ -20,4 +20,16 @@ public class RequestManager {
                 .when()
                 .post(enpoint);
     }
+
+    public static Response delete(String endpoint) {
+        return given().spec(requestSpecification)
+                .when().delete(endpoint);
+    }
+
+    public static Response put(String endpoint, String body) {
+        return given().spec(requestSpecification)
+                .body(body)
+                .when()
+                .put(endpoint);
+    }
 }

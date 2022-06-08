@@ -1,7 +1,9 @@
 package com.api.DELETE;
 
 import com.api.Authentication;
+import com.api.RequestManager;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,9 +29,7 @@ public class TrelloDelete {
 
     @Test
     public void deleteBoard(){
-        given().spec(requestSpecification).log().all().
-                delete("/1/boards/" + id)
-                .then().log().all()
-                .statusCode(200);
+        Response res = RequestManager.delete("/1/boards/" + id);
+        res.then().statusCode(200);
     }
 }
