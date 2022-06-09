@@ -32,4 +32,33 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
     testCompile 'io.cucumber:cucumber-java:7.0.0'
     testCompile 'io.cucumber:cucumber-junit:7.0.0'
+    compile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.0.0'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task OtherCucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'com.api', 'src/test/resources/OtherTest']
+        }
+    }
+}
+
+task AllCucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'com.api', 'src/test/resources']
+        }
+    }
 }
