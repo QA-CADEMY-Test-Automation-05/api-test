@@ -3,6 +3,9 @@ pipeline {
   tools {
    gradle "gradle_6"
   }
+  triggers {
+    pollSCM 'H/10 * * * *'
+  }
  stages {
      stage("Build") {
          steps {
