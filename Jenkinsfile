@@ -3,12 +3,12 @@ pipeline {
  stages {
      stage("Build") {
          steps {
-             bat 'echo ==== Building ====='
+             bat 'echo ==== HEllo from Other Build===='
          }
      }
      stage("Test") {
          steps {
-             bat 'echo ==== testing ====='
+             bat 'echo ==== Other HEllo ====='
          }
      }
  }
