@@ -1,14 +1,17 @@
 pipeline {
  agent any
+  tools {
+   gradle "gradle_6"
+  }
  stages {
      stage("Build") {
          steps {
-             bat 'echo ==== HEllo from Other Build===='
+             bat 'echo ==== Im Building===='
          }
      }
      stage("Test") {
          steps {
-             bat 'echo ==== Other HEllo ====='
+             bat 'gradle clean AllCucumber'
          }
      }
  }
