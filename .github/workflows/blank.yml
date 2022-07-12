@@ -25,11 +25,11 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Create Docker Image
-        run: docker build -t automation:1.0.0 .
+        run: sudo docker build -t automation:1.0.0 .
         
       - name: Tag docker image
-        run: docker tag automation:1.0.0 automation:1.0.0
+        run: sudo docker tag automation:1.0.0 automation:1.0.0
 
       # Runs a set of commands using the runners shell
       - name: Run docker tests
-        run: docker-compose run automation AllCucumber
+        run: sudo docker-compose run automation AllCucumber
